@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:56:35 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/24 11:26:20 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/05/24 15:08:50 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 
 # define CLEAR_TERM "\e[1;1H\e[2J"
 
-# define ESTR_KILL "Error: Unable to send signal to the server (pong)"
+# define ESTR_KILL "Error: Unable to send signal to the client (pong back)"
 # define ESTR_MALLOC "Error: Memory allocation failure"
 # define ESTR_SIGACTION "Error: Unable to set signal handler"
 
