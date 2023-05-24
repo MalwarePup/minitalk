@@ -6,13 +6,14 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:56:35 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/22 03:11:00 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/05/24 11:26:20 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SERVER_BONUS_H
 # define SERVER_BONUS_H
 
+# include <stdlib.h>
 # include <stdint.h>
 # include <stdbool.h>
 # include <unistd.h>
@@ -55,7 +56,7 @@ typedef struct s_server
 	uint32_t	offset;
 	char		*message;
 	pid_t		client_pid;
-	uint32_t	current_bits;
+	uint32_t	current_bit;
 	uint32_t	message_size;
 	uint32_t	received_index;
 	bool		is_malloc_complete;

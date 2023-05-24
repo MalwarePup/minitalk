@@ -6,11 +6,10 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:53:36 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/22 03:12:36 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/05/24 11:07:32 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "server_bonus.h"
 
 t_server	g_server;
