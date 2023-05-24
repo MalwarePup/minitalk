@@ -60,3 +60,5 @@ dkms.conf
 # Executable
 client
 server
+client_bonus
+server_bonus
