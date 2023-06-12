@@ -1,6 +1,6 @@
-[submodule "libft"]
-	path = libft
-	url = git@github.com:MalwarePup/libft.git
 [submodule "minitalk-tester"]
 	path = minitalk-tester
 	url = git@github.com:MalwarePup/minitalk-tester.git
+[submodule "lib/libft"]
+	path = lib/libft
+	url = git@github.com:MalwarePup/libft.git
