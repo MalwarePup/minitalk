@@ -6,68 +6,76 @@
 #    By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/06 11:38:04 by ladloff           #+#    #+#              #
-#    Updated: 2023/05/22 03:15:33 by ladloff          ###   ########.fr        #
+#    Updated: 2023/06/12 16:00:43 by ladloff          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CLIENT_EXEC		?=	client
-B_CLIENT_EXEC	?=	client_bonus
-SERVER_EXEC		?=	server
-B_SERVER_EXEC	?=	server_bonus
+CLIENT_NAME		:=	client
+B_CLIENT_NAME	:=	client_bonus
+SERVER_NAME		:=	server
+B_SERVER_NAME	:=	server_bonus
 
-SRC_DIR			?=	./src
-OBJ_DIR			?=	./obj
-INC_DIR			?=	./include
-LIB_DIR			?=	./libft
+SRC_PATH		:=	./src
+BUILD_PATH		:=	./build
+INCLUDE_PATH	:=	./include
+LIBFT_PATH		:=	./lib/libft
 
-SRC_CLIENT		?=	client/client.c client/client_utils.c
-B_SRC_CLIENT	?=	client/client_bonus.c client/client_utils_bonus.c
-SRC_SERVER		?=	server/server.c server/server_utils.c
-B_SRC_SERVER	?=	server/server_bonus.c server/server_utils_bonus.c
+SRC_CLIENT		:=	client/client.c client/client_utils.c
+B_SRC_CLIENT	:=	client/client_bonus.c client/client_utils_bonus.c
+SRC_SERVER		:=	server/server.c server/server_utils.c
+B_SRC_SERVER	:=	server/server_bonus.c server/server_utils_bonus.c
 
-OBJ_CLIENT		:=	$(SRC_CLIENT:%.c=$(OBJ_DIR)/%.o)
-B_OBJ_CLIENT	:=	$(B_SRC_CLIENT:%.c=$(OBJ_DIR)/%.o)
-OBJ_SERVER		:=	$(SRC_SERVER:%.c=$(OBJ_DIR)/%.o)
-B_OBJ_SERVER	:=	$(B_SRC_SERVER:%.c=$(OBJ_DIR)/%.o)
-LIB_INC			:=	$(addprefix -I, $(LIB_DIR)/include)
-INC				:=	$(addprefix -I, $(INC_DIR))
+OBJ_CLIENT		:=	$(patsubst %.c,$(BUILD_PATH)/%.o,$(SRC_CLIENT))
+B_OBJ_CLIENT	:=	$(patsubst %.c,$(BUILD_PATH)/%.o,$(B_SRC_CLIENT))
+OBJ_SERVER		:=	$(patsubst %.c,$(BUILD_PATH)/%.o,$(SRC_SERVER))
+B_OBJ_SERVER	:=	$(patsubst %.c,$(BUILD_PATH)/%.o,$(B_SRC_SERVER))
 
-CFLAGS			:=	-Wall -Wextra -Werror $(INC) $(LIB_INC)
-LDFLAGS			:=	-L$(LIB_DIR) -lft
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+INCLUDE_FLAGS	:=	-I$(INCLUDE_PATH) -I$(LIBFT_PATH)/include
+CFLAGS			:=	-Wall -Wextra -Werror $(INCLUDE_FLAGS)
+LDFLAGS			:=	-L$(LIBFT_PATH)
+LDLIBS			:=	-lft
+
+.PHONY: all libft clean fclean re bonus rebonus clean_libft fclean_libft
+
+all: libft $(CLIENT_NAME) $(SERVER_NAME)
+
+libft:
+	$(MAKE) -C $(LIBFT_PATH)
+
+$(BUILD_PATH)/%.o: $(SRC_PATH)/%.c
 	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-all: $(CLIENT_EXEC) $(SERVER_EXEC)
+$(CLIENT_NAME): $(OBJ_CLIENT)
+	$(CC) $(CFLAGS) $(OBJ_CLIENT) $(LDFLAGS) $(LDLIBS) -o $(CLIENT_NAME)
 
-$(CLIENT_EXEC): $(OBJ_CLIENT)
-	@$(MAKE) -C libft
-	$(CC) $(CFLAGS) $(OBJ_CLIENT) $(LDFLAGS) -o $(CLIENT_EXEC)
-
-$(SERVER_EXEC): $(OBJ_SERVER)
-	$(CC) $(CFLAGS) $(OBJ_SERVER) $(LDFLAGS) -o $(SERVER_EXEC)
+$(SERVER_NAME): $(OBJ_SERVER)
+	$(CC) $(CFLAGS) $(OBJ_SERVER) $(LDFLAGS) $(LDLIBS) -o $(SERVER_NAME)
 
 clean:
-	@$(MAKE) clean -C libft
-	@rm -f $(OBJ_DIR)/*.o
+	rm -f $(BUILD_PATH)/*.o
 
 fclean: clean
-	@$(MAKE) fclean -C libft
-	@rm -rf $(OBJ_DIR)
-	@rm -f $(CLIENT_EXEC) $(SERVER_EXEC) $(B_CLIENT_EXEC) $(B_SERVER_EXEC)
+	rm -rf $(BUILD_PATH)
+	rm -f $(CLIENT_NAME) $(SERVER_NAME) $(B_CLIENT_NAME) $(B_SERVER_NAME)
 
 re: fclean all
 
-bonus: $(B_CLIENT_EXEC) $(B_SERVER_EXEC)
+bonus: libft $(B_CLIENT_NAME) $(B_SERVER_NAME)
 
-$(B_CLIENT_EXEC): $(B_OBJ_CLIENT)
-	@$(MAKE) -C libft
-	$(CC) $(CFLAGS) $(B_OBJ_CLIENT) $(LDFLAGS) -o $(B_CLIENT_EXEC)
+$(B_CLIENT_NAME): $(B_OBJ_CLIENT)
+	$(CC) $(CFLAGS) $(B_OBJ_CLIENT) $(LDFLAGS) $(LDLIBS) -o $(B_CLIENT_NAME)
 
-$(B_SERVER_EXEC): $(B_OBJ_SERVER)
-	$(CC) $(CFLAGS) $(B_OBJ_SERVER) $(LDFLAGS) -o $(B_SERVER_EXEC)
+$(B_SERVER_NAME): $(B_OBJ_SERVER)
+	$(CC) $(CFLAGS) $(B_OBJ_SERVER) $(LDFLAGS) $(LDLIBS) -o $(B_SERVER_NAME)
 
 rebonus: fclean bonus
 
-.PHONY: all clean fclean re bonus rebonus
+cleanlibft:
+	$(MAKE) clean -C $(LIBFT_PATH)
+
+fcleanlibft:
+	$(MAKE) fclean -C $(LIBFT_PATH)
+
+relibft: fcleanlibft libft
