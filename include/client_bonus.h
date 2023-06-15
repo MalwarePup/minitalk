@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:56:02 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/22 03:09:58 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/06/15 17:52:52 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,12 @@
 # define ESTR_EMPTY_STR "Error: Message is empty"
 # define ESTR_KILL_P1 "Error: Unable to send signal to the server. Possible"
 # define ESTR_KILL_P2 " reasons could be invalid PID or lack of permissions"
-# define ESTR_KILL ESTR_KILL_P1 ESTR_KILL_P2
 # define ESTR_SIGACTION "Error: Unable to set signal handler"
 # define ESTR_PONG_TIMEOUT "Error: Pong not received from the server"
 # define ESTR_NO_ACK "Error: no acknowledgment for the message received"
 
 # define STR_SUCCESS_P1 "I successfully sent the message with a size of %s%d%s"
 # define STR_SUCCESS_P2 " to the server %s%d%s\n"
-# define STR_SUCCESS STR_SUCCESS_P1 STR_SUCCESS_P2
 
 # define BITS_PER_BYTE 8
 # define RETRY_COUNT 3
@@ -67,6 +65,7 @@ typedef struct s_client
 extern t_client	g_client;
 
 /* client_utils.c */
+
 void	handle_error(t_error_code error_code);
 void	send_data(uint32_t data, uint32_t size);
 void	send_message(const char *message);

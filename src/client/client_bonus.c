@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:52:48 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/22 03:12:03 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/06/15 17:46:11 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	main(int argc, char *argv[])
 	if (!g_client.is_message_acknowledge)
 		handle_error(ECODE_NO_ACK);
 	else
-		ft_printf(STR_SUCCESS, CYAN, g_client.message_size, RESET, GREEN,
-			g_client.server_pid, RESET);
+		ft_printf(STR_SUCCESS_P1 STR_SUCCESS_P2, CYAN, g_client.message_size,
+			RESET, GREEN, g_client.server_pid, RESET);
 	return (EXIT_SUCCESS);
 }
