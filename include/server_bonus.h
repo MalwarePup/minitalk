@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:56:35 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/24 15:08:50 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/06/15 18:01:51 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,11 @@
 # define ESTR_SIGACTION "Error: Unable to set signal handler"
 
 # define STR_LINE "----------------------------------------------------------\n"
-# define STR_PID "Welcome to Minitalk!\n This is my PID: %s%d%s\n" STR_LINE
+# define STR_PID "Welcome to Minitalk!\n This is my PID: %s%d%s\n"
 # define STR_SIGINT "\n\nI handle the %sSIGINT%s signal, see you later\n"
 # define STR_CLIENT "I got a signal from the client with following PID %s%d%s"
 # define STR_SIZE "\nI handle message size of %s%d%s and the message is:"
 # define STR_PRINT "\n\n%s\n"
-# define STR_SUCCESS STR_CLIENT STR_SIZE STR_PRINT STR_LINE
 
 # define BITS_PER_BYTE 8
 # define BYTE_SIZE 7
@@ -66,6 +65,7 @@ typedef struct s_server
 extern t_server	g_server;
 
 /* server_utils.c */
+
 void	handle_message_size(int signum);
 void	handle_message(int signum);
 void	handle_error(t_error_code error_code);

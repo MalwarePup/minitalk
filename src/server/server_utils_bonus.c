@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 13:47:54 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/24 11:26:12 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/06/15 17:54:09 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ void	process(void)
 	pong_when_operation_complete(&g_server.is_message_received);
 	if (kill(g_server.client_pid, SIGUSR2) == -1)
 		handle_error(ECODE_KILL);
-	ft_printf(STR_SUCCESS, GREEN, g_server.client_pid, RESET,
-		CYAN, g_server.message_size, RESET,
+	ft_printf(STR_CLIENT STR_SIZE STR_PRINT STR_LINE, GREEN,
+		g_server.client_pid, RESET, CYAN, g_server.message_size, RESET,
 		g_server.message);
 	free(g_server.message);
 }
