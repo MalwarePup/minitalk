@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:56:35 by ladloff           #+#    #+#             */
-/*   Updated: 2023/06/15 18:02:18 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/06/15 18:10:29 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@
 # include <signal.h>
 # include "ft_printf.h"
 
-# define RED "\x1B[31m"
-# define CYAN "\x1B[36m"
-# define GREEN "\x1B[32m"
-# define RESET "\x1B[0m"
+# define RED "\033[31m"
+# define CYAN "\033[36m"
+# define GREEN "\033[32m"
+# define RESET "\033[0m"
 
-# define CLEAR_TERM "\e[1;1H\e[2J"
+# define CLEAR_TERM "\033[1;1H\033[2J"
 
 # define ESTR_KILL "Error: Unable to send signal to the client (pong back)"
 # define ESTR_MALLOC "Error: Memory allocation failure"

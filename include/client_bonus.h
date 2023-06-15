@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:56:02 by ladloff           #+#    #+#             */
-/*   Updated: 2023/06/15 17:52:52 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/06/15 18:10:03 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 # include <signal.h>
 # include "libft.h"
 
-# define CYAN "\x1B[36m"
-# define GREEN "\x1B[32m"
-# define RESET "\x1B[0m"
+# define CYAN "\033[36m"
+# define GREEN "\033[32m"
+# define RESET "\033[0m"
 
 # define ESTR_INVALID_ARGS "Usage: ./client <srv_pid> <message>"
 # define ESTR_INVALID_PID "Error: Invalid server PID entered"
