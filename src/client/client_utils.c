@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 17:50:04 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/22 03:02:34 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/06/15 17:37:13 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	handle_error(t_error_code error_code)
 	else if (error_code == ECODE_EMPTY_STR)
 		ft_putendl_fd(ESTR_EMPTY_STR, STDERR_FILENO);
 	else if (error_code == ECODE_KILL)
-		ft_putendl_fd(ESTR_KILL, STDERR_FILENO);
+		ft_putendl_fd(ESTR_KILL_P1 ESTR_KILL_P2, STDERR_FILENO);
 	else if (error_code == ECODE_SIGACTION)
 		ft_putendl_fd(ESTR_SIGACTION, STDERR_FILENO);
 	else if (error_code == ECODE_PONG_TIMEOUT)
