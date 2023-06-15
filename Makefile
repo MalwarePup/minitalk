@@ -6,7 +6,7 @@
 #    By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/06 11:38:04 by ladloff           #+#    #+#              #
-#    Updated: 2023/06/15 17:46:57 by ladloff          ###   ########.fr        #
+#    Updated: 2023/06/15 17:47:44 by ladloff          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ OBJ_SERVER		:=	$(patsubst %.c,$(BUILD_PATH)/%.o,$(SRC_SERVER))
 B_OBJ_SERVER	:=	$(patsubst %.c,$(BUILD_PATH)/%.o,$(B_SRC_SERVER))
 
 
-CFLAGS			:=	-Wall -Wextra -Werror
+CFLAGS			:=	-Wall -Wextra -Werror -Wpedantic
 CPPFLAGS		:=	-I$(INCLUDE_PATH) -I$(LIBFT_PATH)/include
 LDFLAGS			:=	-L$(LIBFT_PATH)
 LDLIBS			:=	-lft
