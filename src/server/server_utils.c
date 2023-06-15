@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 13:47:54 by ladloff           #+#    #+#             */
-/*   Updated: 2023/06/15 17:53:56 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/06/15 20:53:45 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,7 @@ void	process(void)
 	ft_memset(&g_server, 0, sizeof(t_server));
 	g_server.offset = MAX_OFFSET;
 	pause();
-	if (!g_server.is_malloc_complete)
-		pong_when_operation_complete(&g_server.is_malloc_complete);
-	else
-		pong_when_operation_complete(&g_server.is_message_received);
+	pong_when_operation_complete(&g_server.is_malloc_complete);
 	g_server.message = malloc((g_server.message_size + 1) * sizeof(char));
 	if (!g_server.message)
 		handle_error(ECODE_MALLOC);
