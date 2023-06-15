@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:53:36 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/24 11:07:43 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/06/15 17:50:31 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	set_sigaction(void)
 int	main(void)
 {
 	set_sigaction();
-	ft_printf(CLEAR_TERM STR_PID, GREEN, getpid(), RESET);
+	ft_printf(CLEAR_TERM STR_PID STR_LINE, GREEN, getpid(), RESET);
 	while (1)
 		process();
 }
