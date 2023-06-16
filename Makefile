@@ -6,7 +6,7 @@
 #    By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/06 11:38:04 by ladloff           #+#    #+#              #
-#    Updated: 2023/06/15 22:02:35 by ladloff          ###   ########.fr        #
+#    Updated: 2023/06/16 12:33:25 by ladloff          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,10 +63,10 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 -include $(DEP_CLIENT) $(DEP_SERVER)
 
 $(CLIENT_NAME): $(OBJ_CLIENT)
-	$(CC) $(OBJ_CLIENT) $(LDFLAGS) $(LDLIBS) -o $(CLIENT_NAME)
+	$(CC) $(CFLAGS) $(OBJ_CLIENT) $(LDFLAGS) $(LDLIBS) -o $(CLIENT_NAME)
 
 $(SERVER_NAME): $(OBJ_SERVER)
-	$(CC) $(OBJ_SERVER) $(LDFLAGS) $(LDLIBS) -o $(SERVER_NAME)
+	$(CC) $(CFLAGS) $(OBJ_SERVER) $(LDFLAGS) $(LDLIBS) -o $(SERVER_NAME)
 
 clean:
 	rm -rf $(BUILD_DIR)
